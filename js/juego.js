@@ -270,14 +270,65 @@ function iniciar() {
 iniciar();
 
 var time = 0;
+var clock = 0;
 var interval;
 function startTimer() {
   var timer = document.getElementById('timer');
   interval = setInterval(function() {
     time++;
-    timer.innerHTML = time;
+
+    if (clock < 12) {
+      clock++;
+    } else {
+      clock = 1;
+    }
+
+    timer.innerHTML = '<i>' + getClock(clock) + '</i> ' + time;
   }, 1000);
 }
 function stopTimer() {
   clearInterval(interval);
+}
+
+function getClock(clock) {
+  var emoji = '';
+  switch (clock) {
+    case 1:
+      emoji = '🕐';
+      break;
+    case 2:
+      emoji = '🕑';
+      break;
+    case 3:
+      emoji = '🕒';
+      break;
+    case 4:
+      emoji = '🕓';
+      break;
+    case 5:
+      emoji = '🕔';
+      break;
+    case 6:
+      emoji = '🕕';
+      break;
+    case 7:
+      emoji = '🕖';
+      break;
+    case 8:
+      emoji = '🕗';
+      break;
+    case 9:
+      emoji = '🕘';
+      break;
+    case 10:
+      emoji = '🕙';
+      break;
+    case 11:
+      emoji = '🕚';
+      break;
+    case 12:
+      emoji = '🕛';
+      break;
+  }
+  return emoji;
 }
